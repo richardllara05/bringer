@@ -11,35 +11,33 @@ from .db import db
 
 def create_app():
 
-	app = Flask(__name__)
-	jwt = JWTManager(app)
-	
-	load_dotenv()
+    app = Flask(__name__)
+    jwt = JWTManager(app)
 
-	if os.environ['CONFIG'] == 'dev':
-		app.config.from_object('config.DevConfig')
-	elif os.environ['CONFIG'] == 'prod':
-		app.config.from_object('config.ProdConfig')
+    load_dotenv()
 
-	db.init_app(app)
+    if os.environ["CONFIG"] == "dev":
+        app.config.from_object("config.DevConfig")
+    elif os.environ["CONFIG"] == "prod":
+        app.config.from_object("config.ProdConfig")
 
-	with app.app_context():
-		app.jinja_env.filters['pkg_date'] = pkg_date	
-		app.jinja_env.filters['pkg_location'] = pkg_location	
-		app.jinja_env.filters['pkg_status'] = pkg_status
+    db.init_app(app)
 
-	
-		from . import track
-		from . import jwt
+    with app.app_context():
+        app.jinja_env.filters["pkg_date"] = pkg_date
+        app.jinja_env.filters["pkg_location"] = pkg_location
+        app.jinja_env.filters["pkg_status"] = pkg_status
 
-		db.create_all()
+        from . import track
+        from . import jwt
 
-		@app.route('/')
-		def index():
-			return render_template('index.html')
+        db.create_all()
 
-		app.register_blueprint(jwt.bp, url_prefix='/jwt')
-		app.register_blueprint(track.bp, url_prefix='/track')
+        @app.route("/")
+        def index():
+            return render_template("index.html")
 
+        app.register_blueprint(jwt.bp, url_prefix="/jwt")
+        app.register_blueprint(track.bp, url_prefix="/track")
 
-	return app
+    return app
