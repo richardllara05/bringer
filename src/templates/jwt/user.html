@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block title %} User {% endblock %}
+{% block content %} 
+	<h1>User</h1>
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Username</th>
+		</tr>
+		<tr>
+			<td>{{ user.id }}</td>
+			<td>{{ user.username }}</td>
+		</tr>
+	</table>
+	<h2>JWT Token</h2>
+	<p>{{ token }}</p>
+{% endblock %} 

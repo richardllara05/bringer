@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block title %} Track {% endblock %}
+{% block content %}
+	{% set parcels = shipment.parcel_tracking_items %}
+	{% set before_last = parcels[-2] %}
+	{% set last = parcels[-1] %}
+
+	<h1>Tracking Info</h1>
+	<ul>
+		{% for item in parcels %}
+			{% if loop.index < loop.length - 1 %}
+			<li>{{ item | pkg_date }}</li>
+			<ul>
+				{% if item.tracking_code_vendor.tracking_code_vendor_locales | length > 1 %}
+						<li>{{ item | pkg_status }}</li>
+						<li>{{ item | pkg_location }}</li>
+				{% endif %}
+			</ul>
+			{% endif %}
+		{% endfor %}
+		<li>{{ before_last | pkg_date }}</li>
+		<ul>
+			<li>Parcel Information Recieved</li>
+			<li>{{ before_last | pkg_location }}</li>
+		</ul>
+		<li>{{ last | pkg_date }}</li>
+		<ul>
+			<li>Parcel Address Information Processed </li>
+			<li>{{ last | pkg_location }}</li>
+		</ul>
+	</ul>
+{% endblock %}

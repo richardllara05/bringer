@@ -1,0 +1,7 @@
+services:
+  backend:
+   build: .
+   ports:
+    - 9030:5000
+   image: bringer
+   container_name: bringer_backend

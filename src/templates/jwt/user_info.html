@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block title %} User {% endblock %}
+{% block content %} 
+	<h1>User Info</h1>
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Username</th>
+			<th>Password</th>
+		</tr>
+		<tr>
+			<td>{{ user.id }}</td>
+			<td>{{ user.username }}</td>
+			<td>{{ user.password }}</td>
+		</tr>
+	</table>
+{% endblock %}
