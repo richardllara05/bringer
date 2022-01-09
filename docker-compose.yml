@@ -1,0 +1,26 @@
+services:
+  backend:
+   build: ./backend
+   image: bringer_backend
+   container_name: bringer_be
+   environment:
+     FE_HOSTNAME: bringer_fe
+   networks: 
+     - backend
+   ports:
+    - 9030:5000
+  frontend:
+   build: ./frontend
+   image: bringer_frontend
+   container_name: bringer_fe 
+   networks: 
+     - frontend
+     - backend
+   ports:
+    - 9040:3000
+   depends_on:
+     - backend
+  
+networks:
+  backend:
+  frontend:

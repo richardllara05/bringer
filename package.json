@@ -1,0 +1,18 @@
+{
+  "name": "bringer",
+  "version": "1.0.0",
+  "description": "**Bridger Challenge**\r ===========================\r > Fun coding challenge for Bridger. \r REST API built with Flask Framework and JWT.",
+  "scripts": {
+    "preinstall": "npm cache clean --force",
+    "postinstall": "npm --prefix ./backend i ./backend  && npm --prefix ./frontend i ./frontend",
+    "prestart": "npx cpy --dot frontend/.env.example --rename='.env' frontend/ && npx cpy --dot backend/.env.example --rename='.env' backend",
+    "start": "npx concurrently  \"npm --prefix ./backend start\" \"npm --prefix ./frontend start\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.0.0",
+    "cpy-cli": "^3.1.1"
+  }
+}
