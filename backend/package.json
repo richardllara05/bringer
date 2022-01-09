@@ -5,7 +5,10 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon --exec npx babel-node app.js",
-    "postinstall": "node postinstall.js"
+    "createdb": "npx knex migrate:up --knexfile db/knexfile.js",
+    "addusers": "npx knex seed:run --knexfile db/knexfile.js",
+    "generatedb": "npm run createdb && npm run addusers",
+    "prestart": "npx mkdirp data && npm run generatedb"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +24,7 @@
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.15",
+    "mkdirp": "^1.0.4",
     "objection": "^3.0.1",
     "sqlite3": "^5.0.2"
   },
