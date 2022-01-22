@@ -13,7 +13,9 @@ const Home = () => {
     const [users, setUsers] = useState<Users>([]);
     useEffect(() => {
         const getUsers = async () => {
-            await fetch(`http://${process.env.REACT_APP_BE_URL}:5000/jwt`)
+            const PORT = process.env.REACT_APP_BE_PORT
+
+            await fetch(`http://localhost:${PORT}/jwt`)
                 .then((res) => res.json())
                 .then((data) => setUsers(data));
         };

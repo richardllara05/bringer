@@ -25,7 +25,9 @@ const Login = () => {
         const password = passwordRef.current?.value;
 
         if (username && password) {
-            await fetch(`http://${process.env.REACT_APP_BE_URL}:5000/jwt/login`, {
+            const PORT = process.env.REACT_APP_BE_PORT;
+
+            await fetch(`http://localhost:${PORT}/jwt/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

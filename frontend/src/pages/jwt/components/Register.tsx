@@ -27,7 +27,9 @@ const Register = () => {
         const password = passwordRef.current?.value;
 
         if (username && password) {
-            await fetch(`http://${process.env.REACT_APP_BE_URL}:5000/jwt/create-user`, {
+            const PORT = process.env.REACT_APP_BE_PORT;
+
+            await fetch(`http://localhost:${PORT}/jwt/create-user`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),

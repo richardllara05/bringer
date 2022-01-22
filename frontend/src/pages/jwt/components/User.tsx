@@ -23,7 +23,9 @@ const User = () => {
     useEffect(() => {
         const checkLogin = async () => {
             if (!decodedToken) {
-                await fetch(`http://${process.env.REACT_APP_BE_URL}:5000/jwt/user`, {
+                const PORT = process.env.REACT_APP_BE_PORT;
+
+                await fetch(`http://localhost:${PORT}/jwt/user`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

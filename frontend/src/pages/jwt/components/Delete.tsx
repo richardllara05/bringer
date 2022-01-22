@@ -18,9 +18,10 @@ const Delete = () => {
 
     const handleAccept = (event) => {
         event.preventDefault();
+        const PORT = process.env.REACT_APP_BE_PORT
 
         const deleteUser = async () => {
-            await fetch(`http://${process.env.REACT_APP_BE_URL}:5000/jwt/delete-user`, {
+            await fetch(`http://localhost:${PORT}/jwt/delete-user`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id: decodedToken["id"] }),

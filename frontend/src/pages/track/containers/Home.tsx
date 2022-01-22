@@ -11,8 +11,9 @@ const Home = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const trackingNumber = trackingRef.current?.value;
+        const PORT = process.env.REACT_APP_BE_PORT
 
-        fetch(`http://${process.env.REACT_APP_BE_URL}:5000/track`, {
+        fetch(`http://localhost:${PORT}/track`, {
             method: "POST",
             body: JSON.stringify({ trackingNumber }),
             headers: {
