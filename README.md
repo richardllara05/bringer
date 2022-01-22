@@ -66,8 +66,6 @@ frontend -> 5000
 <span id="progress">**In Progress**</span>
 --------
 <hr>
-
-* Docker
 * Nginx
 * Integration tests
 * Unit tests
