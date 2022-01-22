@@ -1,6 +1,6 @@
-**Bridger Challenge**
+**Bringer Challenge**
 ===========================
-> Fun coding challenge for Bridger. 
+> Fun coding challenge for Bringer. 
 REST API built with Express and React Framework with JWT.
 
 <details open="open">
